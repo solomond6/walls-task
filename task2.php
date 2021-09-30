@@ -1,6 +1,6 @@
 <?php 
 
-//seven display representation
+//seven display representation in hash
 $representations = [
     '0'=> ['###', '# #', '# #', '# #', '###'],
     '1'=> ['  #', '  #', '  #', '  #', '  #'],
@@ -15,7 +15,21 @@ $representations = [
     '.'=> ['   ', '   ', '   ', '   ', '  #'],
 ];
 
-
+//seven display representation in hash
+$numRepresentation = [
+    ' '=>[0,0,0,0,0,0,0],
+    '-'=>[0,0,0,0,0,0,1],
+    '0'=>[1,1,1,1,1,1,0],
+    '1'=>[0,1,1,0,0,0,0],
+    '2'=>[1,1,0,1,1,0,1],
+    '3'=>[1,1,1,1,0,0,1],
+    '4'=>[0,1,1,0,0,1,1],
+    '5'=>[1,0,1,1,0,1,1],
+    '6'=>[1,0,1,1,1,1,1],
+    '7'=>[1,1,1,0,0,0,0],
+    '8'=>[1,1,1,1,1,1,1],
+    '9'=>[1,1,1,1,0,1,1]
+];
 
 $timeRepresentation = [];
 
@@ -39,13 +53,13 @@ foreach ($timeRepresentation as $tkey => $tvalue) {
     $replaceCollon = str_replace(":", "", $tvalue);
 
     //split the string in letters
-    $splitTimeString = str_split($replaceCollo);
+    $splitTimeString = str_split($replaceCollon);
     
     $hasharray = [];
     
     //loop through the split string, get the seven display representation and push the value into an empty hash array
     foreach ($splitTimeString as $key => $value) {
-        array_push($hasharray, str_replace(" ", "", join(" ", $representations[$value])));
+        array_push($hasharray, str_replace(" ", "", join(" ", $numRepresentation[$value])));
     }
     
     //check the length of the time string represenattion and add to the empty array with key 
